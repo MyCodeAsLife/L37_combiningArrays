@@ -14,31 +14,18 @@ namespace L37_сombiningArrays
             List<int> array2 = new List<int>() { 3, 2, 3, 3, 5, 2, 7 };
             List<int> finalArray = new List<int>();
 
-            ArraysLinq(finalArray, array1);
-            ArraysLinq(finalArray, array2);
+            MergeArrays(finalArray, array1);
+            MergeArrays(finalArray, array2);
 
             WriteArray(finalArray);
             Console.WriteLine();
         }
 
-        private static void ArraysLinq(List<int> finalArray, List<int> array)
+        static void MergeArrays(List<int> finalArray, List<int> array)
         {
-            if (finalArray.Count == 0)
-                finalArray.Add(array[0]);
-
-            for (int i = 0; i < array.Count; i++)
-            {
-                bool isCopy = false;
-
-                for (int j = 0; j < finalArray.Count; j++)
-                {
-                    if (finalArray[j] == array[i])
-                        isCopy = true;
-                }
-
-                if (isCopy == false)
-                    finalArray.Add(array[i]);
-            }
+            foreach (var item in array)
+                if (finalArray.Contains(item) == false)
+                    finalArray.Add(item);
         }
 
         static void WriteArray(List<int> array)
